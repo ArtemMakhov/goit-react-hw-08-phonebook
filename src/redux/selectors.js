@@ -1,10 +1,10 @@
-export const getContacts = state => state.contacts.items;
+export const getContacts = state => state.contacts;
 
-export const getFilter = state => state.contacts.filter;
+export const getFilter = state => state.filter;
 
-export const getVisibleContacts = (contacts, filter) => {
+export const getVisibleContacts = (state, filter) => {
   const normalizedFilter = filter.toLowerCase();
-  return contacts.filter(contact =>
+  return state.filter(contact =>
     contact.name.toLowerCase().includes(normalizedFilter)
   );
 };

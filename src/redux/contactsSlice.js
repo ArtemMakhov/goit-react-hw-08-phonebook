@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const contactsInitialState = {
-  contacts: {
-    items: [],
-    filter: '',
-  },
+const contactsInitialState =
+{
+  contacts: [],
+  filter: "",
 };
 
 const contactsSlice = createSlice({
@@ -13,10 +12,10 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer: (state, { payload }) => {
-        if (state.contacts.items.find(({ name }) => name === payload.name)) {
+        if (state.contacts.find(({ name }) => name === payload.name)) {
           return alert(`${payload.name} is already in contacts`);
         }
-        state.contacts.items.push(payload);
+        state.contacts.push(payload);
       },
 
       prepare: ({ id, name, number }) => {
@@ -31,13 +30,13 @@ const contactsSlice = createSlice({
     },
 
     deleteContact: (state, { payload }) => {
-      state.contacts.items = state.contacts.items.filter(
+      state.contacts = state.contacts.filter(
         ({ id }) => id !== payload
       );
     },
 
     setFilter: (state, { payload }) => {
-      state.contacts.filter = payload;
+      state.filter = payload;
     },
   },
 });
