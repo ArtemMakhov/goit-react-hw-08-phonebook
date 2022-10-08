@@ -1,29 +1,29 @@
 import { ContactListItem } from "../ContactItem/ContactItem";
 import { List } from "./ContactList.styled";
 
-import { getContacts,getFilter,getVisibleContacts} from "redux/selectors";
-import {  useSelector,} from "react-redux";
+import { selectVisibleContacts} from "redux/selectors";
+import { useSelector} from "react-redux";
 
 
 export const ContactList = () => {
-    const contacts = useSelector(getContacts);
-    const filter = useSelector(getFilter);
-    const visibleContacts = getVisibleContacts(contacts, filter);
+
+    const visibleContacts = useSelector(selectVisibleContacts);
 
     return (
         <List>
             {visibleContacts.length  ? (
-                visibleContacts.map(({ name, id, number }) => {
+                visibleContacts.map(({ name, id, phone }) => {
                 return (
                     <ContactListItem
                         key={id}
                         name={name}
-                        number={number}
+                        phone={phone}
                         id={id}
                     />
                 )
             })
-            ):(<p>Contact list is empty</p>)};
+            ) : (<p  > Contact list is empty</p>)
+};
         </List>
     )
 };

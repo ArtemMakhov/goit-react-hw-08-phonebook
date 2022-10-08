@@ -1,25 +1,38 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/operations';
+import { selectContact } from 'redux/selectors';
 import { Form, Label, Input,Btn } from './ContactForm.styled';
-import { addContact } from 'redux/contactsSlice';
+// import { addContact } from 'redux/contactsSlice';
 
-import { nanoid } from '@reduxjs/toolkit';
+// import { nanoid } from '@reduxjs/toolkit';
 
 export function ContactForm ()  {
 
     const dispatch = useDispatch();
-
+    const contacts = useSelector(selectContact);
 
     const handleSubmit = e => {
         e.preventDefault();
       const form = e.target;
-
-    dispatch(
-      addContact({
-        id: nanoid(),
-        name: form.name.value,
-        number: form.number.value,
-      })
-    );
+        if (contacts.find(({ name }) => name === form.name.value)) {
+            alert("Oooops");
+            form.reset();
+            return;
+       } 
+        
+        dispatch(
+            addContact({
+            name: form.name.value,
+            number: form.phone.value,
+        })
+        );
+    // dispatch(
+    //   addContact({
+    //     id: nanoid(),
+    //     name: form.name.value,
+    //     number: form.number.value,
+    //   })
+    // );
     form.reset();
     };
 
