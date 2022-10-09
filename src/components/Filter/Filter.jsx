@@ -4,6 +4,7 @@ import { Label, Input, Text } from "./Filter.styled";
 
 export const Filter = () => {
     const dispatch = useDispatch();
+    
     const hangleFilter = e => {
         dispatch(setFilter(e.target.value));
     };

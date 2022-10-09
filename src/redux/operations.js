@@ -13,13 +13,22 @@ export const fetchContacts = createAsyncThunk("contacts/fetchAll", async (_, thu
 }
 );
 
-export const addContact = createAsyncThunk("contacts/addContact", async ({name,phone},thunkAPI) => {
-      try {
-        const res = await axios.post("/contacts",{name,phone});
+export const addContact = createAsyncThunk("contacts/addContact", async ({ name, phone }, thunkAPI) => {
+    try {
+        const res = await axios.post("/contacts", { name, phone });
         return res.data;
     } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
-    };  
-})
+    };
+});
+
+export const deleteContact = createAsyncThunk("contacts/deleteContact", async (contactId, thunkAPI) => {
+    try {
+        const res = await axios.delete(`/contacts/${contactId}`);
+        return res.data;
+    } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+    };
+});
 
 
