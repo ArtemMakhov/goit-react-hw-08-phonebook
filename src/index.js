@@ -10,12 +10,12 @@ import {store} from './redux/store';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
       <Provider store={store}> 
-        <BrowserRouter>
-          <App />
+      <BrowserRouter basename="/goit-react-hw-08-phonebook">
+        <ThemeProvider theme={theme}>
+        <App />
+        </ThemeProvider>
         </BrowserRouter>  
-      </Provider>
-    </ThemeProvider>
+      </Provider> 
   </React.StrictMode>
 );
