@@ -12,12 +12,12 @@ export const ContactList = () => {
     return (
         <List>
             {visibleContacts.length  ? (
-                visibleContacts.map(({ name, id, phone }) => {
+                visibleContacts.map(({ name, id, number }) => {
                 return (
                     <ContactListItem
                         key={id}
                         name={name}
-                        phone={phone}
+                        number={number}
                         id={id}
                     />
                 )
