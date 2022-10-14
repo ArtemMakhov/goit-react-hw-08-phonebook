@@ -1,6 +1,8 @@
+import { Box } from "components/Box";
 import { useAuth } from "hooks";
 import { useDispatch } from "react-redux";
 import { logOut } from "redux/auth/operations";
+import { Title, Btn } from "./UserMenu.stuled";
 
 export const UserMenu = () => {
     const dispatch = useDispatch();
@@ -9,9 +11,9 @@ export const UserMenu = () => {
     const hendleLogOut = () => dispatch(logOut());
 
     return (
-        <div>
-            <p>Welcome, {user.name}</p>
-            <button type="button" onClick={hendleLogOut}>Logout</button>
-        </div>
+        <Box display="flex">
+            <Title>Welcome, {user.name}</Title>
+            <Btn type="button" onClick={hendleLogOut}>Logout</Btn>
+        </Box>
     );
 };

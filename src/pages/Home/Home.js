@@ -5,9 +5,9 @@ export default function Home() {
     return (
         <Wrapper>
             <Title>
-                Welcome contacts page{''}
+                Welcome contacts phonebook {''}
                         <span role="img" aria-label="Greeting icon">
-          💁‍♀️
+          📞
         </span>
             </Title>
         </Wrapper>
